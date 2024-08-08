@@ -1,6 +1,7 @@
 import { program } from "commander";
 import { upload } from "./upload";
 import { list } from "./list";
+import { download } from "./download";
 // Define the root command
 program
   .name("gitFire")
@@ -8,6 +9,7 @@ program
 // subcommands
 upload();
 list();
+download();
 // Parse the command line arguments
 program.parse(process.argv);
 

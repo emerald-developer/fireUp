@@ -16,7 +16,7 @@ export function list() {
       "The password to use for encryption."
     )
     .action(async (options) => {
-      const { folderPath, password } = options;
+      const { folderPath = '', password } = options;
       const app = await initFirebaseFromConfig();
       console.log(
         await listFilesInFirebaseDirectory(app, password, encryptFilePath(folderPath, password))
