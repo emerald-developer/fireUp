@@ -1,13 +1,12 @@
 import { program } from "commander";
 import {
-  initFirebaseFromConfig,
   updateConfigProperty,
 } from "../handler/config";
 
-export function upload() {
+export function initCli() {
   program
-    .command("upload")
-    .description("Uploads contents of a directory with encryption.")
+    .command("init")
+    .description("Initializes firebase config.")
     .requiredOption("-key, --apiKey <apiKey>", "The apiKey for firebase.")
     .requiredOption(
       "-auth, --authDomain <authDomain>",

@@ -3,7 +3,7 @@ import { initFirebaseFromConfig } from "../handler/config";
 import { listFilesInFirebaseDirectory } from "../firebase/list";
 import { encryptFilePath } from "../handler/encrypt";
 
-export function list() {
+export function listCli() {
   program
     .command("list")
     .description("Lists decrypted file paths of all files in firebase.")

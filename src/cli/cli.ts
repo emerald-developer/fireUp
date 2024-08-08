@@ -1,15 +1,19 @@
 import { program } from "commander";
-import { upload } from "./upload";
-import { list } from "./list";
-import { download } from "./download";
+import { uploadCli } from "./upload";
+import { listCli } from "./list";
+import { downloadCLi } from "./download";
+import { initCli } from "./init";
+import { deleteCli } from "./delete";
 // Define the root command
 program
   .name("gitFire")
   .description("A CLI tool to interact with Git repositories using Firebase.");
 // subcommands
-upload();
-list();
-download();
+uploadCli();
+listCli();
+downloadCLi();
+initCli();
+deleteCli();
 // Parse the command line arguments
 program.parse(process.argv);
 

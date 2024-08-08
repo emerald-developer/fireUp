@@ -1,29 +1,28 @@
 import { program } from "commander";
 import { initFirebaseFromConfig } from "../handler/config";
 import { listFilesInFirebaseDirectory } from "../firebase/list";
-import { downloadDecryptFile } from "../firebase/download";
+import { deleteFileFromFirebase } from "../firebase/delete";
 
-export function downloadCLi() {
+export function deleteCli() {
   program
-    .command("download")
-    .description("Downloads contents of a directory")
+    .command("delete")
+    .description("Deletes a file or folder from Firebase.")
     .requiredOption("-fip, --firebasePath <firebasePath>", "The folder or file path in firebase.")
-    .requiredOption("-lp, --localPath <localPath>", "The local path to which the file or folder should be downloaded.")
     .requiredOption("-p, --password <password>", "The password to use for encryption.")
     .action(async (options) => {
       const { firebasePath, localPath, password } = options;
       const app = await initFirebaseFromConfig()
       const files = listFilesInFirebaseDirectory(app, password)
       if (!firebasePath.endsWith('/')){
-        downloadDecryptFile(app, firebasePath, localPath, password);
+        deleteFileFromFirebase(app, firebasePath, password);
       }else if (firebasePath == '/')
         (await files).forEach(async (file) => {
-          downloadDecryptFile(app, `${file}`, `${localPath.endsWith('/')?localPath:localPath+'/'}${file}`, password);
+          deleteFileFromFirebase(app, `${file}`, password);
         });
       else{
         console.log((await files).filter((file) => file.startsWith((firebasePath))));
         (await files).filter((file) => file.startsWith((firebasePath))).forEach(async (file) => {
-          downloadDecryptFile(app, `${file}`, `${localPath.endsWith('/')?localPath:localPath+'/'}${file}`, password);
+          deleteFileFromFirebase(app, `${file}`, password);
         });
       }
     });

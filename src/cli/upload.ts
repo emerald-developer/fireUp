@@ -3,7 +3,7 @@ import { readDir } from "../handler/ignore";
 import { uploadEncryptFile } from "../firebase/upload";
 import { initFirebaseFromConfig } from "../handler/config";
 
-export function upload() {
+export function uploadCli() {
   program
     .command("upload")
     .description("Uploads contents of a directory with encryption.")
