@@ -44,7 +44,7 @@ export async function updateConfigProperty(configPath: string, fileName:string, 
 }
 
 export async function initFirebaseFromConfig(): Promise<FirebaseApp>{
-  const firebaseConfig = await readConfig('./config', 'firebase.json');
+  const firebaseConfig = await readConfig('./config', 'config.json');
   const app = initializeApp(firebaseConfig.firebaseConfig);
   return app;
 }
