@@ -7,7 +7,7 @@ export function uploadCli() {
   program
     .command("upload")
     .description("Uploads contents of a directory with encryption.")
-    .requiredOption("-f, --folderPath <folderPath>", "The folder path.")
+    .requiredOption("-f, --folderPath <folderPath>", "The folder path or file path to upload.")
     .requiredOption("-p, --password <password>", "The password to use for encryption.")
     .action(async (options) => {
       const { folderPath, password } = options;

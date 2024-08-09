@@ -1,11 +1,15 @@
 {
   "name": "fireup",
+  "module": "index.ts",
   "type": "module",
   "devDependencies": {
     "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "fireUp": "bun index.ts"
   },
   "dependencies": {
     "commander": "^12.1.0",
